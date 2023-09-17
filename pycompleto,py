@@ -1,0 +1,133 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import pandas as pd
+
+df = pd.read_csv(r"G:\Mi unidad\1 Archivos py\4 GEEK\2 PROYECTOS\29 FINAL INMO\03 NPL DESCRIPTION\falsas.csv", sep=';', encoding='latin1') 
+
+
+
+df.head(10)
+
+cantidad_verdaderas = (df['spam'] == 0).sum()
+cantidad_falsas = (df['spam'] == 1).sum()
+
+print(f"Descripciones verdaderas: {cantidad_verdaderas}")
+print(f"Descripciones falsas: {cantidad_falsas}")
+df = df.drop_duplicates()
+df = df.reset_index(inplace = False, drop = True)
+df.shape
+print(f"Spam: {len(df.loc[df.spam == 1])}")
+print(f"No spam: {len(df.loc[df.spam == 0])}")
+import nltk
+nltk.download("omw")
+nltk.download("stopwords")
+
+import regex as re
+
+def preprocess_text_spanish(text):
+    # Eliminar cualquier caracter que no sea una letra (a-z) o una letra acentuada en español (áéíóúüñ) o un espacio en blanco ( )
+    text = re.sub(r'[^a-záéíóúüñ ]', " ", text, flags=re.IGNORECASE)
+
+    # Reducir espacios en blanco múltiples a uno único
+    text = re.sub(r'\s+', " ", text.lower())
+
+    # Eliminar tags (esto puede no ser relevante para texto en español)
+    text = re.sub("&lt;/?.*?&gt;", " &lt;&gt; ", text)
+
+    return text.split()
+
+# Aplicar la función de preprocesamiento a una columna llamada 'texto' en tu DataFrame
+df["descripcion"] = df["descripcion"].apply(preprocess_text_spanish)
+df.head()
+
+from nltk import download
+import nltk
+nltk.download("omw-1.4")  # Descargar el recurso para lematización en español
+nltk.download("stopwords")  # Descargar la lista de palabras vacías en español
+
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+download("wordnet")
+lemmatizer = WordNetLemmatizer()
+
+# Cambia "Spanish" a "spanish" en la siguiente línea para cargar las palabras vacías en español
+stop_words = stopwords.words("spanish")
+
+def lemmatize_text(words, lemmatizer=lemmatizer):
+    tokens = [lemmatizer.lemmatize(word) for word in words]
+    tokens = [word for word in tokens if word not in stop_words]
+    tokens = [word for word in tokens if len(word) > 3]
+    return tokens
+
+df["descripcion"] = df["descripcion"].apply(lemmatize_text)
+df.head()
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+# Filtra las descripciones donde 'spam' es igual a 0
+descripciones_spam_0 = df[df['spam'] == 0]['descripcion']
+
+# Filtra las descripciones donde 'spam' es igual a 1
+descripciones_spam_1 = df[df['spam'] == 1]['descripcion']
+
+# Crea una nube de palabras para 'spam' igual a 0
+wordcloud_spam_0 = WordCloud(width=800, height=800, background_color="black", max_words=1000, min_font_size=40, random_state=82) \
+    .generate(str(descripciones_spam_0))
+
+# Crea una nube de palabras para 'spam' igual a 1
+wordcloud_spam_1 = WordCloud(width=800, height=800, background_color="black", max_words=1000, min_font_size=40, random_state=82) \
+    .generate(str(descripciones_spam_1))
+
+# Plotea la primera nube de palabras
+plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
+plt.imshow(wordcloud_spam_0)
+plt.title("Nube de Palabras - Posible anuncio no fraudulento")
+plt.axis("off")
+
+# Plotea la segunda nube de palabras
+plt.subplot(1, 2, 2)
+plt.imshow(wordcloud_spam_1)
+plt.title("Nube de Palabras - Posible anuncio  fraudulento")
+plt.axis("off")
+
+plt.tight_layout()
+plt.show()
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+tokens_list = df["descripcion"]
+tokens_list = [" ".join(tokens) for tokens in tokens_list]
+
+vectorizer = TfidfVectorizer(max_features = 5000, max_df = 0.8, min_df = 5)
+X = vectorizer.fit_transform(tokens_list).toarray()
+y = df["spam"]
+
+X[:5]
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+
+from sklearn.svm import SVC
+
+model = SVC(kernel = "rbf", C = 10, gamma = 0.1, decision_function_shape = 'ovr',probability = False, shrinking = False, random_state = 42)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+y_pred
+
+from sklearn.metrics import accuracy_score
+
+accuracy_score(y_test, y_pred)
+
+import joblib
+
+# Guardar el modelo SVM en un archivo
+joblib.dump(model, r"G:\Mi unidad\1 Archivos py\4 GEEK\2 PROYECTOS\29 FINAL INMO\03 NPL DESCRIPTION\ModelSVM1.pkl")
+joblib.dump(model, r"G:\Mi unidad\1 Archivos py\4 GEEK\2 PROYECTOS\29 FINAL INMO\03 NPL DESCRIPTION\ModelSVM1.sav")
