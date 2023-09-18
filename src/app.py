@@ -9,14 +9,21 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import nltk
-import matplotlib.pyplot as plt  # Importar correctamente pyplot
-import nltk
+import matplotlib.pyplot as plt
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+# Descargar recursos de NLTK
 nltk.download('popular')
+nltk.download("omw-1.4")
+nltk.download("stopwords")
+nltk.download("wordnet")
+
 # Cargar el modelo SVM previamente entrenado
-model = joblib.load(r"G:\Mi unidad\1 Archivos py\4 GEEK\2 PROYECTOS\29 FINAL INMO\03 NPL DESCRIPTION\ModelSVM1.sav")
+model = joblib.load(r"/workspaces/31-FINAL-PROYECT-NPL-MODEL-PROGRAMA-DOOR/models/ModelSVM0.sav")
 
 # Cargar el vectorizador TF-IDF previamente entrenado
-vectorizer = joblib.load(r"G:\Mi unidad\1 Archivos py\4 GEEK\2 PROYECTOS\29 FINAL INMO\03 NPL DESCRIPTION\VECTOR1.pkl")
+vectorizer = joblib.load(r"/workspaces/31-FINAL-PROYECT-NPL-MODEL-PROGRAMA-DOOR/data/VECTOR1.pkl")
 
 # Función de preprocesamiento de texto en español
 def preprocess_text_spanish(text):
@@ -25,19 +32,11 @@ def preprocess_text_spanish(text):
     text = re.sub("&lt;/?.*?&gt;", " &lt;&gt; ", text)
     return text.split()
 
-# Función para lematizar texto
-nltk.download("omw-1.4")  # Descargar el recurso para lematización en español
-nltk.download("stopwords")  # Descargar la lista de palabras vacías en español
-
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-
-nltk.download("wordnet")
+# Inicializar el lematizador y las palabras vacías en español
 lemmatizer = WordNetLemmatizer()
-
-# Cambia "Spanish" a "spanish" en la siguiente línea para cargar las palabras vacías en español
 stop_words = stopwords.words("spanish")
 
+# Función para lematizar texto
 def lemmatize_text(words, lemmatizer=lemmatizer):
     tokens = [lemmatizer.lemmatize(word) for word in words]
     tokens = [word for word in tokens if word not in stop_words]
@@ -45,7 +44,7 @@ def lemmatize_text(words, lemmatizer=lemmatizer):
     return tokens
 
 # Cargar el DataFrame con los datos
-df = pd.read_csv(r"G:\Mi unidad\1 Archivos py\4 GEEK\2 PROYECTOS\29 FINAL INMO\03 NPL DESCRIPTION\falsas.csv", sep=';', encoding='latin1') 
+df = pd.read_csv(r"/workspaces/31-FINAL-PROYECT-NPL-MODEL-PROGRAMA-DOOR/data/falsas.csv", sep=';', encoding='latin1') 
 
 # Título de la aplicación
 st.title("Detector de Anuncios Fraudulentos")
@@ -87,14 +86,14 @@ st.subheader("Nube de Palabras - Posibles anuncios no fraudulentos")
 plt.figure(figsize=(12, 6))
 plt.imshow(wordcloud_spam_0)
 plt.axis("off")
-st.pyplot()
+st.pyplot(plt.gcf())
 
 # Plotea la segunda nube de palabras
 st.subheader("Nube de Palabras - Posibles anuncios fraudulentos")
 plt.figure(figsize=(12, 6))
 plt.imshow(wordcloud_spam_1)
 plt.axis("off")
-st.pyplot()
+st.pyplot(plt.gcf())
 
 # Información adicional
 st.sidebar.markdown("### Información Adicional")
