@@ -20,7 +20,7 @@ nltk.download("wordnet")
 model = joblib.load(r"/workspaces/PROYECTO-FINAL-NLP/models/ModelSVM0.sav")
 
 # Cargar el vectorizador TF-IDF previamente entrenado
-vectorizer = joblib.load(r"/workspaces/PROYECTO-FINAL-NLP/data/VECTOR1.pkl")
+vectorizer = joblib.load("/workspaces/PROYECTO-FINAL-NLP/data/VECTOR1.pkl")
 
 # Función de preprocesamiento de texto en español.
 def preprocess_text_spanish(text):
