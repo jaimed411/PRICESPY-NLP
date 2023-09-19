@@ -9,3 +9,4 @@ regex
 scikit-learn
 streamlit
 wordcloud
+scikit-learn
