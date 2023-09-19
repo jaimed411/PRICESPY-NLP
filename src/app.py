@@ -1,8 +1,7 @@
-import streamlit as                                 
+import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
 import regex as re
 from wordcloud import WordCloud
 from sklearn.svm import SVC
