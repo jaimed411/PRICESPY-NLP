@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Descargar recursos de NLTK
+# Descargar recursos de NLTK..
 nltk.download('popular')
 nltk.download("omw-1.4")
 nltk.download("stopwords")
