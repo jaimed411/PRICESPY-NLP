@@ -17,7 +17,7 @@ nltk.download("stopwords")
 nltk.download("wordnet")
 
 # Cargar el modelo SVM previamente entrenado
-model = joblib.load(r"/workspaces/PROYECTO-FINAL-NLP/models/ModelSVM0.sav")
+model = joblib.load("/workspaces/PROYECTO-FINAL-NLP/models/ModelSVM0.sav")
 
 # Cargar el vectorizador TF-IDF previamente entrenado
 vectorizer = joblib.load("/workspaces/PROYECTO-FINAL-NLP/data/VECTOR1.pkl")
