@@ -16,11 +16,15 @@ nltk.download("omw-1.4")
 nltk.download("stopwords")
 nltk.download("wordnet")
 
+model = "./models/ModelSVM0.sav"
+vectorizer = "./data/VECTOR1.pkl"
+
 # Cargar el modelo SVM previamente entrenado
-model = joblib.load("/workspaces/PROYECTO-FINAL-NLP/models/ModelSVM0.sav")
+model = joblib.load(model)
 
 # Cargar el vectorizador TF-IDF previamente entrenado
-vectorizer = joblib.load("/workspaces/PROYECTO-FINAL-NLP/data/VECTOR1.pkl")
+vectorizer = joblib.load(vectorizer)
+
 
 # Función de preprocesamiento de texto en español.
 def preprocess_text_spanish(text):
