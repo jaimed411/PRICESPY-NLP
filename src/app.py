@@ -51,7 +51,7 @@ def generate_wordcloud(text, max_words=500, min_font_size=12):
     return wordcloud
 
 # Cargar el DataFrame con los datos
-df = pd.read_csv(r"/workspaces/PROYECTO-FINAL-NLP/data/falsas.csv", sep=';', encoding='latin1') 
+df = pd.read_csv(r"/workspaces/PROYECTO-FINAL-NLP/src/data/falsas.csv", sep=';', encoding='latin1') 
 
 # Estilo CSS para centrar el contenido
 st.markdown("""
