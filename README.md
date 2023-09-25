@@ -1,4 +1,4 @@
-# PriceSpy - Provincias
+# PriceSpy - Comentarios Fraudulentos
 
 La plataforma que combina  analítica de datos e inteligencia artificial para proporcionar información valiosa sobre el mercado de viviendas en España y asi ayudar a la toma decisiones para determinar el valor de una vivienda
 
