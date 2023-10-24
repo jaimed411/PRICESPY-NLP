@@ -8,7 +8,7 @@ El proyecto se divide en:
 - Modelo Madrid ([link](https://github.com/jaimed411/PROYECTO-FINAL-MADRID))
 - Modelo Málaga ([link](https://github.com/jaimed411/PROYECTO-FINAL-MALAGA))
 - Modelo Comentarios Fraudulentos ([link](https://github.com/jaimed411/PROYECTO-FINAL-NLP))
-- Presentación Web ([link](https://github.com/jaimed411/PROYECTO-FINAL-WEB)
+- Presentación Web ([link](https://github.com/jaimed411/PROYECTO-FINAL-WEB))
 
 
 ## DEMO
