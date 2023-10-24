@@ -1,4 +1,5 @@
-# PriceSpy - Comentarios Fraudulentos
+# PriceSpy - Provincias
+![sobrenosotros](https://github.com/jaimed411/PROYECTO-FINAL-PROVINCIAS/assets/131529197/a56e6de7-29d4-4258-856a-7c0a0a4d2573)
 
 La plataforma que combina  analítica de datos e inteligencia artificial para proporcionar información valiosa sobre el mercado de viviendas en España y asi ayudar a la toma decisiones para determinar el valor de una vivienda
 
@@ -29,7 +30,7 @@ Instalar requirements ' pip install -r requirements.txt '
 
 ## Uso
 
-Este proyecto contiene un modelo de machine learning basado en 2000 datos de comentarios verdaderos y fraudulentos de España. Se predice si un anuncio es fraudulento o no acorde al texto que le escribas.
+Este proyecto contiene un modelo de machine learning basado en 85000 datos de provicincias de España. Se predice un precio medio de la vivienda acorde a m2 y habitaciones.
 
 
 ## Autores
@@ -40,4 +41,4 @@ Este proyecto contiene un modelo de machine learning basado en 2000 datos de com
 
 ## Agradecimientos
 
-Agradecemos a la academia 4geeks toda nuestra experiencia adquirid...........
+Queremos expresar nuestro más profundo agradecimiento a 4Geek Academy por brindarnos una experiencia educativa excepcional que ha transformado nuestra comprensión de la ciencia de datos. Este viaje de aprendizaje ha sido enriquecedor y estimulante, y no habría sido posible sin la dedicación y el apoyo de esta institución.
