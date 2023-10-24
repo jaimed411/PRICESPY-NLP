@@ -6,7 +6,7 @@ La plataforma que combina  analítica de datos e inteligencia artificial para pr
 El proyecto se divide en:
 - Modelo Provincias ([link](https://github.com/jaimed411/PROYECTO-FINAL))
 - Modelo Madrid ([link](https://github.com/jaimed411/PROYECTO-FINAL-MADRID))
-- Modelo Málaga (link)
+- Modelo Málaga ([link](https://github.com/jaimed411/PROYECTO-FINAL-MADRID))
 - Modelo Comentarios Fraudulentos ([link](https://github.com/jaimed411/PROYECTO-FINAL-NLP))
 
 
