@@ -1,4 +1,4 @@
-# PriceSpy - Provincias
+# PriceSpy - NLP
 ![sobrenosotros](https://github.com/jaimed411/PROYECTO-FINAL-PROVINCIAS/assets/131529197/a56e6de7-29d4-4258-856a-7c0a0a4d2573)
 
 La plataforma que combina  analítica de datos e inteligencia artificial para proporcionar información valiosa sobre el mercado de viviendas en España y asi ayudar a la toma decisiones para determinar el valor de una vivienda
